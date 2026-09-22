@@ -233,7 +233,7 @@ body.locked{overflow:hidden}
 <h2>Анкета гостя</h2>
 <p class="lead">Пожалуйста, заполните небольшую анкету. Она поможет нам подготовить дом, еду и всё необходимое именно для вас.</p>
 <div class="form">
-<form id="rsvp-form">
+<form id="rsvp-form" method="POST" action="https://script.google.com/macros/s/AKfycbykEA9DfGC-eeJjQbXPR3LAkG8ROxiKmVpKRUtAhWCHxZH6pTOXjIYWfahj1F5oO8wv/exec" target="iframe_target">
 <div class="row">
 <div><label>Имя и фамилия *</label><input name="name" required placeholder="Например, Анна Иванова"></div>
 <div><label>Вы будете с нами? *</label><select name="attend" required><option value="">Выберите</option><option>Да, буду!</option><option>К сожалению, не смогу</option></select></div>
@@ -265,6 +265,7 @@ body.locked{overflow:hidden}
 <button type="submit">Отправить анкету</button>
 <div class="success" id="success">Спасибо! Ваш ответ сохранён на этом устройстве. 🤍<br>Для публикации сайта можно подключить отправку этих анкет вам в Telegram, Google Таблицы или на почту.</div>
 </form>
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 </div>
 </div>
 </section>
@@ -306,19 +307,11 @@ document.querySelectorAll('.reveal').forEach(x=>obs.observe(x));
 </script>
 <script>
   const form = document.getElementById('rsvp-form');
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbykEA9DfGC-eeJjQbXPR3LAkG8ROxiKmVpKRUtAhWCHxZH6pTOXjIYWfahj1F5oO8wv/exec';
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => {
-          alert('Спасибо! Ваш ответ отправлен.');
-          form.reset();
-      })
-      .catch(error => {
-          alert('Ошибка. Попробуйте ещё раз.');
-          console.error('Ошибка!', error.message);
-      });
+  form.addEventListener('submit', function(e) {
+    setTimeout(function() {
+      alert('Спасибо! Ваш ответ отправлен.');
+      form.reset();
+    }, 500);
   });
 </script>
 </body>
