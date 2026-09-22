@@ -303,6 +303,7 @@ tick();setInterval(tick,1000);
 
 const obs=new IntersectionObserver(entries=>entries.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(x=>obs.observe(x));
+</script>
 <script>
   const form = document.getElementById('rsvp-form');
   const scriptURL = 'https://script.google.com/macros/s/AKfycbykEA9DfGC-eeJjQbXPR3LAkG8ROxiKmVpKRUtAhWCHxZH6pTOXjIYWfahj1F5oO8wv/exec';
