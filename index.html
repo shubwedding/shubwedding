@@ -299,7 +299,7 @@ function tick(){
 }
 tick();setInterval(tick,1000);
 
-const form=document.getElementById('rsvp-form');
+
 
 const obs=new IntersectionObserver(entries=>entries.forEach(x=>{if(x.isIntersecting)x.target.classList.add('show')}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(x=>obs.observe(x));
